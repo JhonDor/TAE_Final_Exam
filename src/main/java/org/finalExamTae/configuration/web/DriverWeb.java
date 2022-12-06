@@ -1,4 +1,4 @@
-package org.finalExamTae.configuration;
+package org.finalExamTae.configuration.web;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

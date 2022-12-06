@@ -1,0 +1,17 @@
+org\finalExamTae\runners\RunCucumberTestsWeb.class
+org\finalExamTae\runners\RunCucumberTestsMobile.class
+org\finalExamTae\tests\stepDefinitions\mobile\MobileHooks.class
+org\finalExamTae\pageObjects\pages\WatchPage.class
+org\finalExamTae\utils\Listener.class
+org\finalExamTae\pageObjects\screens\TutorialScreen.class
+org\finalExamTae\utils\capabilities\ConfigCapabilities.class
+org\finalExamTae\utils\webtestdata\WebData.class
+org\finalExamTae\pageObjects\screens\PrivacyAndLegalScreen.class
+org\finalExamTae\pageObjects\pages\BasePage.class
+org\finalExamTae\pageObjects\pages\HomePage.class
+org\finalExamTae\pageObjects\screens\DashBoardScreen.class
+org\finalExamTae\pageObjects\screens\MapScreen.class
+org\finalExamTae\tests\stepDefinitions\mobile\mobileStepDefinitions.class
+org\finalExamTae\tests\stepDefinitions\web\EspnWebStepsDefinitions.class
+org\finalExamTae\pageObjects\screens\BaseScreen.class
+org\finalExamTae\pageObjects\screens\MenuScreen.class

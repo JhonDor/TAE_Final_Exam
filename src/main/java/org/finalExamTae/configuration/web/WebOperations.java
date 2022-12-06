@@ -1,4 +1,4 @@
-package org.finalExamTae.configuration;
+package org.finalExamTae.configuration.web;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,16 +18,17 @@ public class WebOperations {
 
     private final WebDriver driver;
     private final WebDriverWait wait;
-    private final long waitDuration = 20;
+    private final long waitDuration = 20L;
 
     public WebOperations(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(waitDuration));
+        this.wait = new WebDriverWait(driver, waitDuration);
         initElements(driver, this);
     }
 
     /**
      * getter for the WebDriver
+     *
      * @return the WebDriver
      */
     public WebDriver getDriver() {
@@ -36,6 +37,7 @@ public class WebOperations {
 
     /**
      * method to  click elements
+     *
      * @param element WebElement
      */
     public void clickElement(WebElement element) {
@@ -46,6 +48,7 @@ public class WebOperations {
 
     /**
      * method  to wait for an element to be clickable before performing actions
+     *
      * @param element WebElement
      */
     public void waitForClickable(WebElement element) {
@@ -54,8 +57,9 @@ public class WebOperations {
 
     /**
      * Wrapper for sendKeys event.
+     *
      * @param element WebElement
-     * @param text String
+     * @param text    String
      */
     public void typeOnInput(WebElement element, String text) {
         this.waitForVisibility(element);
@@ -64,6 +68,7 @@ public class WebOperations {
 
     /**
      * Allows to wait for an element to be visible.
+     *
      * @param element WebElement
      */
     public void waitForVisibility(WebElement element) {
@@ -72,6 +77,7 @@ public class WebOperations {
 
     /**
      * Allows to wait for an element to be invisible.
+     *
      * @param element WebElement
      */
     public void waitForInvisibility(WebElement element) {
@@ -80,6 +86,7 @@ public class WebOperations {
 
     /**
      * Allows to move the mouse over a given element.
+     *
      * @param element WebElement
      */
     public void mouseOver(WebElement element) {
@@ -89,6 +96,7 @@ public class WebOperations {
 
     /**
      * Allows to wait for an element to be present on the DOM of the page.
+     *
      * @param locator String
      */
     public void waitForPresenceOfElement(String locator) {
@@ -97,6 +105,7 @@ public class WebOperations {
 
     /**
      * Allows to wait for a list of element to be present on the DOM of the page.
+     *
      * @param locator String
      */
     public void waitForPresenceOfElements(String locator) {
@@ -105,9 +114,10 @@ public class WebOperations {
 
     /**
      * Allows to wait for an element attribute to change to a given value.
-     * @param element WebElement
+     *
+     * @param element   WebElement
      * @param attribute String
-     * @param value String
+     * @param value     String
      */
     public void waitForAttributeChange(WebElement element, String attribute, String value) {
         this.wait.until(ExpectedConditions.attributeToBe(element, attribute, value));

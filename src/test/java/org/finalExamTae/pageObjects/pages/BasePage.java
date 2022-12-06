@@ -1,6 +1,6 @@
 package org.finalExamTae.pageObjects.pages;
 
-import org.finalExamTae.configuration.WebOperations;
+import org.finalExamTae.configuration.web.WebOperations;
 import org.openqa.selenium.WebDriver;
 
 public class BasePage extends WebOperations {

@@ -1,17 +1,17 @@
-package org.finalExamTae.tests.stepDefinitions;
+package org.finalExamTae.tests.stepDefinitions.web;
 
 import io.cucumber.java.After;
-import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
-import io.cucumber.java.BeforeAll;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.finalExamTae.configuration.DriverWeb;
+import org.finalExamTae.configuration.web.DriverWeb;
 import org.finalExamTae.pageObjects.pages.HomePage;
 import org.finalExamTae.pageObjects.pages.WatchPage;
 import org.finalExamTae.reporting.Reporter;
+import org.finalExamTae.utils.webtestdata.WebData;
 import org.testng.Assert;
 
 import static java.lang.String.format;
@@ -34,16 +34,26 @@ public class EspnWebStepsDefinitions {
      * this method goes before each  tests and deletes the cookies
      */
     @Before
-    public static void scenarioSetUp() {
-        driver = new DriverWeb();
-        Reporter.info("Deleting all cookies");
-        driver.getDriver().manage().deleteAllCookies();
+    public static void scenarioSetUp(Scenario scenario) {
+        scenario.getSourceTagNames().stream().forEach(tag ->{
+            if(tag.equals("@webAutomation")){
+                driver = new DriverWeb();
+                Reporter.info("Deleting all cookies");
+                driver.getDriver().manage().deleteAllCookies();
+            }
+        });
+
     }
-/**
+
     @After
-    public static void tearDown() {
-        driver.getDriver().quit();
-    }*/
+    public static void tearDown(Scenario scenario) {
+        scenario.getSourceTagNames().stream().forEach(tag ->{
+            if(tag.equals("@webAutomation")){
+                driver.getDriver().quit();
+            }
+        });
+
+    }
 
     /**
      * This method opens the browser and navigates to the homepage of ESPN
