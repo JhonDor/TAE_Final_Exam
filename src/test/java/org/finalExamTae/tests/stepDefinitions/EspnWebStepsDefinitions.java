@@ -16,6 +16,9 @@ import org.testng.Assert;
 
 import static java.lang.String.format;
 
+/**
+ * this is the class for the step definitions
+ */
 public class EspnWebStepsDefinitions {
     private static DriverWeb driver;
     private HomePage homePage;
@@ -23,11 +26,13 @@ public class EspnWebStepsDefinitions {
     private final String URL = "https://www.espnqa.com/?src=com&_adblock=true&espn=cloud";
     private final String USER = "Test";
     private static String email;
-    private final String EMAIL_LOGIN = "testing2050@gmail.com";
+
     private final String PASSWORD = "123espn";
     private final String USER_WELCOME = "Welcome" + USER + "!";
 
-
+    /**
+     * this method goes before each  tests and deletes the cookies
+     */
     @Before
     public static void scenarioSetUp() {
         driver = new DriverWeb();
@@ -40,6 +45,9 @@ public class EspnWebStepsDefinitions {
         driver.getDriver().quit();
     }*/
 
+    /**
+     * This method opens the browser and navigates to the homepage of ESPN
+     */
     @Given("I am in the ESPN website home page")
     public void iAmInTheESPNWebsiteHomePage() {
         Reporter.info(format("Navigating to %s", URL));
@@ -49,6 +57,9 @@ public class EspnWebStepsDefinitions {
 
     }
 
+    /**
+     * This method opens the login modal
+     */
 
     @Given("I am in the Log In modal")
     public void iAmInTheLogInModal() {
@@ -58,6 +69,9 @@ public class EspnWebStepsDefinitions {
         homePage.switchToIframe();
     }
 
+    /**
+     * This method verifies that all the elements in the login modal are displayed
+     */
     @Then("The Log in modal, ESPN Logo, Log in button and Sign up button should be displayed")
     public void loginModalAndElementsAreDisplayed() {
         Reporter.info("Verifying the login modal is visible");
@@ -73,11 +87,17 @@ public class EspnWebStepsDefinitions {
         Assert.assertTrue(homePage.signUpButtonIsDisplayed(), "Sign Up button is visible");
     }
 
+    /**
+     * This method clicks in the sign-up button
+     */
     @When("I click on the Sing Up button")
     public void iClickOnTheSingUpButton() {
         homePage.clickOnSignUpButtonIframe();
     }
 
+    /**
+     *This method verifies all the elements in the log in modal are displayed
+     */
     @Then("All the elements to do the sign up should be displayed")
     public void allTheElementsForTheSignUpProcedureShouldBeDisplayed() {
         Reporter.info("Verifying the Sign Up title is visible");
@@ -102,6 +122,10 @@ public class EspnWebStepsDefinitions {
         Assert.assertTrue(homePage.closeIframeButtonIsDisplayed(), "Close button is visible");
     }
 
+    /**
+     * this method creates a new user
+     * @throws InterruptedException
+     */
     @And("I create a new user")
     public void enterAllInformationForSigningUp() throws InterruptedException {
         email = homePage.createEmail();
@@ -120,6 +144,9 @@ public class EspnWebStepsDefinitions {
         //homePage.refreshPage();
     }
 
+    /**
+     * this method creates the whole creation of a new user
+     */
     @Given("I created a new user")
     public void iCreatedANewUser(){
         homePage.mouseOverUserIcon();
@@ -139,6 +166,9 @@ public class EspnWebStepsDefinitions {
 
     }
 
+    /**
+     * this method helps the user going to the watch page
+     */
     @When("I go to the Watch page")
     public void iGoToTheWatchPage(){
         Reporter.info("Going into watch page");
@@ -146,6 +176,9 @@ public class EspnWebStepsDefinitions {
         watchPage = homePage.goToWatchPage();
     }
 
+    /**
+     * this method verifies all the elements in the watch page are displayed
+     */
     @Then("I validate all the elements are displayed")
     public void thePageElementsShouldBeProperlyDisplayed() {
         Reporter.info("Verifying all cards in the second carousel have a title");
@@ -160,6 +193,9 @@ public class EspnWebStepsDefinitions {
         watchPage.clickOnCloseButtonPopUp();
     }
 
+    /**
+     * this method helps going back to the home-page
+     */
     @And("I should be able to return to the Home page")
     public void iShouldBeAbleToReturnToTheHomePage() {
         watchPage.returnToHomePage();
@@ -167,7 +203,9 @@ public class EspnWebStepsDefinitions {
         Assert.assertTrue(homePage.userIconIsDisplayed(), "I returned to the Home page");
     }
 
-
+    /**
+     *
+     */
     @Then("I should be logged in")
     public void iShouldBeLoggedIn() {
         //homePage.waitForLogin();
@@ -177,17 +215,26 @@ public class EspnWebStepsDefinitions {
 
     }
 
+    /**
+     * this method does a mouse over on the user icon
+     */
     @When("I move the mouse over the User Icon")
     public void iMoveTheMouseOverTheUserIcon() {
         homePage.mouseOverUserIcon();
     }
 
+    /**
+     * this method verifies the welcome text displays the user name
+     */
     @Then("The welcome text is displayed and my name are displayed")
     public void theWelcomeTextIsDisplayedAndMyNameAreDisplayed() {
         Reporter.info("Verifying the welcome text is properly displayed with a name");
         Assert.assertEquals(homePage.verifyWelcomeText(), USER_WELCOME, "The welcome text is properly displayed with a name");
     }
 
+    /**
+     * this method does the log out
+     */
     @When("I log out")
     public void iLogOut(){
         homePage.mouseOverUserIcon();
@@ -196,6 +243,9 @@ public class EspnWebStepsDefinitions {
         
     }
 
+    /**
+     * this method verifies the welcome text doesn't display a user name
+     */
     @Then("The welcome text is displayed without my name")
     public void theWelcomeTextIsDisplayedWithoutMyName(){
         Reporter.info("Verifying the welcome text is properly displayed without a name");
