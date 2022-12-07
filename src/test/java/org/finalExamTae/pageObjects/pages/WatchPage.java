@@ -77,8 +77,8 @@ public class WatchPage extends BasePage{
      * @return true if the Close button is displayed, otherwise false
      */
     public boolean closeButtonModalIsDisplayed() {
-        super.waitForVisibility(this.CarouselPopUp);
-        super.waitForVisibility(this.CloseButtonCarouselPopUp);
+        super.waitForVisibility(this.CarouselPopUp, 8);
+        super.waitForVisibility(this.CloseButtonCarouselPopUp,8);
         return this.CloseButtonCarouselPopUp.isDisplayed();
     }
 
@@ -86,6 +86,7 @@ public class WatchPage extends BasePage{
      * Allows to click on the Close button of the modal displayed by clicking a card.
      */
     public void clickOnCloseButtonPopUp() {
+
         super.waitForVisibility(this.CloseButtonCarouselPopUp);
         super.mouseOver(this.CloseButtonCarouselPopUp);
         super.clickElement(this.CloseButtonCarouselPopUp);

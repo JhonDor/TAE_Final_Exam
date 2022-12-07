@@ -74,6 +74,10 @@ public class WebOperations {
     public void waitForVisibility(WebElement element) {
         this.wait.until(ExpectedConditions.visibilityOf(element));
     }
+    public void waitForVisibility(WebElement element, long seconds){
+        new WebDriverWait(driver,seconds).until(ExpectedConditions.visibilityOf(element));
+
+    }
 
     /**
      * Allows to wait for an element to be invisible.

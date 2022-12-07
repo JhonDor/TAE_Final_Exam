@@ -4,6 +4,7 @@ org\finalExamTae\tests\stepDefinitions\mobile\MobileHooks.class
 org\finalExamTae\pageObjects\pages\WatchPage.class
 org\finalExamTae\utils\Listener.class
 org\finalExamTae\pageObjects\screens\TutorialScreen.class
+org\finalExamTae\tests\stepDefinitions\web\WebHooks.class
 org\finalExamTae\utils\capabilities\ConfigCapabilities.class
 org\finalExamTae\utils\webtestdata\WebData.class
 org\finalExamTae\pageObjects\screens\PrivacyAndLegalScreen.class

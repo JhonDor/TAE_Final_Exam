@@ -42,9 +42,15 @@ public class MobileHooks {
      * After hook for closing the app.
      */
     @After
-    public void tearDown() {
-        driver.getDriver().quit();
+    public void tearDown(Scenario scenario) {
+        scenario.getSourceTagNames().stream().forEach(tag -> {
+            if (tag.equals("@mobileAutomation")) {
+                driver.getDriver().quit();
+            }
+        });
+
     }
+
 
     /**
      * Allow to get the current driver instance.

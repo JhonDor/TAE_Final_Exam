@@ -1,13 +1,10 @@
 package org.finalExamTae.tests.stepDefinitions.web;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.finalExamTae.configuration.web.DriverWeb;
 import org.finalExamTae.pageObjects.pages.HomePage;
 import org.finalExamTae.pageObjects.pages.WatchPage;
 import org.finalExamTae.reporting.Reporter;
@@ -20,50 +17,20 @@ import static java.lang.String.format;
  * this is the class for the step definitions
  */
 public class EspnWebStepsDefinitions {
-    private static DriverWeb driver;
     private HomePage homePage;
     private WatchPage watchPage;
-    private final String URL = "https://www.espnqa.com/?src=com&_adblock=true&espn=cloud";
-    private final String USER = "Test";
-    private static String email;
 
-    private final String PASSWORD = "123espn";
-    private final String USER_WELCOME = "Welcome" + USER + "!";
+    private final String USER_WELCOME = "Welcome" + WebData.returnData("user") + "!";
 
-    /**
-     * this method goes before each  tests and deletes the cookies
-     */
-    @Before
-    public static void scenarioSetUp(Scenario scenario) {
-        scenario.getSourceTagNames().stream().forEach(tag ->{
-            if(tag.equals("@webAutomation")){
-                driver = new DriverWeb();
-                Reporter.info("Deleting all cookies");
-                driver.getDriver().manage().deleteAllCookies();
-            }
-        });
 
-    }
-
-    @After
-    public static void tearDown(Scenario scenario) {
-        scenario.getSourceTagNames().stream().forEach(tag ->{
-            if(tag.equals("@webAutomation")){
-                driver.getDriver().quit();
-            }
-        });
-
-    }
 
     /**
      * This method opens the browser and navigates to the homepage of ESPN
      */
     @Given("I am in the ESPN website home page")
     public void iAmInTheESPNWebsiteHomePage() {
-        Reporter.info(format("Navigating to %s", URL));
-        driver.getDriver().get(URL);
-        driver.getDriver().manage().window().maximize();
-        homePage = new HomePage(driver.getDriver());
+        Reporter.info(format("Navigating to %s", WebData.returnData("url")));
+        homePage = new HomePage(WebHooks.getDriver());
 
     }
 
@@ -134,46 +101,30 @@ public class EspnWebStepsDefinitions {
 
     /**
      * this method creates a new user
-     * @throws InterruptedException
      */
     @And("I create a new user")
-    public void enterAllInformationForSigningUp() throws InterruptedException {
-        email = homePage.createEmail();
-        homePage.typeOnFirstNameInput(USER);
-        homePage.typeOnLastNameInput(USER);
+    public void enterAllInformationForSigningUp() {
+        String email = homePage.createEmail();
+        homePage.typeOnFirstNameInput(WebData.returnData("user"));
+        homePage.typeOnLastNameInput(WebData.returnData("user"));
         homePage.typeOnEmailInputForSignUp(email);
-        homePage.typeOnPasswordInputForSignUp(PASSWORD);
+        homePage.typeOnPasswordInputForSignUp(WebData.returnData("password"));
         homePage.mouseOverSignUpForSignUpButtonIframe();
         homePage.clickOnSignUpForSignUpButtonIframe();
         homePage.exitIframe();
 
-        //homePage.clickOnLogout();
-        //Thread.sleep(15000);
-       // homePage.mouseOverUserIcon();
-        //homePage.mouseOverUserIcon();
-        //homePage.refreshPage();
     }
 
     /**
-     * this method creates the whole creation of a new user
+     * this method helps with the whole creation of a new user
      */
     @Given("I created a new user")
     public void iCreatedANewUser(){
-        homePage.mouseOverUserIcon();
-        homePage.clickOnLoginOption();
-        homePage.switchToIframe();
-        homePage.clickOnSignUpButtonIframe();
-        email = homePage.createEmail();
-        homePage.typeOnFirstNameInput(USER);
-        homePage.typeOnLastNameInput(USER);
-        homePage.typeOnEmailInputForSignUp(email);
-        homePage.typeOnPasswordInputForSignUp(PASSWORD);
-        homePage.mouseOverSignUpForSignUpButtonIframe();
-        homePage.clickOnSignUpForSignUpButtonIframe();
-        homePage.exitIframe();
+        this.iAmInTheLogInModal();
+        this.iClickOnTheSingUpButton();
+        this.enterAllInformationForSigningUp();
         homePage.waitForLogin();
         homePage.mouseOverUserIcon();
-
     }
 
     /**
@@ -214,7 +165,7 @@ public class EspnWebStepsDefinitions {
     }
 
     /**
-     *
+     * This method verifies the user was created and is logged in
      */
     @Then("I should be logged in")
     public void iShouldBeLoggedIn() {
@@ -234,7 +185,7 @@ public class EspnWebStepsDefinitions {
     }
 
     /**
-     * this method verifies the welcome text displays the user name
+     * this method verifies the welcome text displays the username
      */
     @Then("The welcome text is displayed and my name are displayed")
     public void theWelcomeTextIsDisplayedAndMyNameAreDisplayed() {
@@ -249,8 +200,6 @@ public class EspnWebStepsDefinitions {
     public void iLogOut(){
         homePage.mouseOverUserIcon();
         homePage.clickOnLogout();
-
-        
     }
 
     /**
