@@ -33,10 +33,7 @@ public class MapScreen extends BaseScreen {
 
     @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\".*categoryTitle\")")
     private AndroidElement categoryList;
-    @HowToUseLocators(androidAutomation = ALL_POSSIBLE)
-    @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\".*filterTitle.*\")")
-    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Filter\")")
-    private AndroidElement filterButton;
+
     @HowToUseLocators(androidAutomation = ALL_POSSIBLE)
     @AndroidFindBy(uiAutomator = "new UiSelector().resourceIdMatches(\".*toggleTitle.*\")")
     @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Show List\")")
@@ -55,13 +52,7 @@ public class MapScreen extends BaseScreen {
         return isElementAvailable(categoryList);
     }
 
-    /**
-     * @author Hans.Marquez
-     * return true if Filter Button element is displayed in screen, otherwise false.
-     */
-    public boolean isFilterDisplayed() {
-        return isElementAvailable(filterButton);
-    }
+
 
     /**
      * @author Hans.Marquez
@@ -76,8 +67,8 @@ public class MapScreen extends BaseScreen {
      * @author jhon.dorado
      * @return true if the option is displayed, false otherwise
      */
-    public boolean isShowHotelsOptionDisplayed() {
-        if (this.isElementAvailable(categoryList, 5)) {
+    public boolean isHotelsOptionDisplayed() {
+        if (this.isElementAvailable(categoryList, 15)) {
             click(categoryList);
         }
 
@@ -92,7 +83,18 @@ public class MapScreen extends BaseScreen {
     public boolean verifyCategoryOptions() {
         List<String> expectedOptions = new ArrayList<>();
         List<Boolean> optionsFound = new ArrayList<>();
-        Collections.addAll(expectedOptions, "Attractions", "Characters", "Dining", "Entertainment", "Restrooms", "Events and Tours", "PhotoPass", "Guest Services", "Shops", "Hotels", "Spa and Recreation");
+        Collections.addAll(expectedOptions,
+                "Attractions",
+                "Characters",
+                "Dining",
+                "Entertainment",
+                "Restrooms",
+                "Events and Tours",
+                "PhotoPass",
+                "Guest Services",
+                "Shops",
+                "Hotels",
+                "Spa and Recreation");
         waitForVisibilityOfAllElements(categoryOptions);
         for (int i = 0; i < categoryOptions.size(); i++) {
             optionsFound.add(categoryOptions.get(i).getText().equals(expectedOptions.get(i)));

@@ -15,4 +15,22 @@ Feature: Disney app testing
   Scenario: Verify Category List
     Given I am in the Map screen
     When I tap on the Category List button
-    Then Different categories, including Hotels option, should be displayed
+    Then All the categories, including Hotels option, should be displayed
+
+  @mobileAutomation
+  Scenario: Verify Menu screen
+    Given I am in the menu screen
+    When I scroll down
+    Then All the categories in the menu screen are displayed
+
+  @mobileAutomation
+  Scenario: Verify Privacy & Legal view
+    Given I am in the menu screen
+    When I scroll down
+    And I select the Privacy & Legal option
+    Then The Privacy & Legal options should be displayed
+
+  @mobileAutomation
+  Scenario: Verify add plans option
+    When I select the add Plans option
+    Then The Check Dining Availability option should be displayed

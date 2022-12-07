@@ -34,6 +34,6 @@ Feature: ESPN testing
   Scenario: Verify Welcome texts when logged out
     Given I created a new user
     When I log out
-    Then The welcome text is displayed without my name
+    Then The welcome text is displayed without a username
 
 

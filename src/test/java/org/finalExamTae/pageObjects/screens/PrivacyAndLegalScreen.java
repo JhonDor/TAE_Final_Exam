@@ -26,7 +26,7 @@ public class PrivacyAndLegalScreen extends BaseScreen {
      * verifies if of the options in the screen are correct
      * @return true if all the options are correct, false otherwise
      */
-    public boolean PrivacyAndLegalOptions(){
+    public boolean verifyPrivacyAndLegalOptions(){
         List<String> expectedOptions = new ArrayList<>();
         List <Boolean> correctOption = new ArrayList<>();
         Collections.addAll(expectedOptions, "Privacy Policy", "Terms of Use", "Supplemental Terms and Conditions","Legal Notices", "Property Rules", "Electronic Communications Disclosure", "Your California Privacy Rights", "Do Not Sell My Personal Information", "In-App Maps Subject to Google Terms and Conditions", "In-App Maps Subject to Google Privacy Policy");

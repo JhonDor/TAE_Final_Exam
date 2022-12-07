@@ -114,6 +114,14 @@ public class DashBoardScreen extends BaseScreen {
             click(dismissPreferenceUpdateButton);
         }
     }
+    /**
+     * navigates to add plans screen
+     * @return a new add plans screen
+     */
+    public AddPlansScreen goToAddPlansScreen() {
+        this.navigateToOption(this.addPlansButton);
+        return new AddPlansScreen(getDriver());
+    }
 }
 
 

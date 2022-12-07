@@ -243,7 +243,7 @@ public class EspnWebStepsDefinitions {
     }
 
     /**
-     * this method does the log out
+     * this method does the log-out
      */
     @When("I log out")
     public void iLogOut(){
@@ -254,9 +254,9 @@ public class EspnWebStepsDefinitions {
     }
 
     /**
-     * this method verifies the welcome text doesn't display a user name
+     * this method verifies the welcome text doesn't display a username
      */
-    @Then("The welcome text is displayed without my name")
+    @Then("The welcome text is displayed without a username")
     public void theWelcomeTextIsDisplayedWithoutMyName(){
         Reporter.info("Verifying the welcome text is properly displayed without a name");
         homePage.refreshPage();
