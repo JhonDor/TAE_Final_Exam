@@ -87,6 +87,9 @@ public class mobileStepDefinitions {
         Assert.assertTrue(menuScreen.checkMenuOptions(), "All menu options are displayed");
     }
 
+    /**
+     * this method scrolls to the end of the screen
+     */
     @When("I scroll down")
     public void iScrollDown() {
         menuScreen.scrollDown(4);
@@ -119,6 +122,9 @@ public class mobileStepDefinitions {
         addPlansScreen = dashBoardScreen.goToAddPlansScreen();
     }
 
+    /**
+     * verifies if the dining availability option is displayed
+     */
     @Then("The Check Dining Availability option should be displayed")
     public void theCheckDiningAvailabilityOptionShouldBeDisplayed() {
         Assert.assertTrue(addPlansScreen.isCheckingDiningAvailabilityDisplayed()

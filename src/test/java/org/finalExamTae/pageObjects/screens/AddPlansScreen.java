@@ -4,11 +4,9 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Class which contains all Add Plans screen elements and methods.
+ * Class which contains all add plans screen elements and methods.
  */
 public class AddPlansScreen extends BaseScreen {
 

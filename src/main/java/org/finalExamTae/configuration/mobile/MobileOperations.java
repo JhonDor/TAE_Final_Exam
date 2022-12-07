@@ -45,22 +45,6 @@ public abstract class MobileOperations {
     }
 
     /**
-     * Swipe vertical for scrolling down in the screen.
-     */
-    public void swipeVertical() {
-        Dimension windowSize = this.getDriver().manage().window().getSize();
-        int x = windowSize.getWidth() / 2;
-        int y = windowSize.getHeight() / 2;
-        int edgeBorder = 10;
-        TouchAction action = new TouchAction(this.getDriver());
-        action.press(PointOption.point(x, y))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(200)))
-                .moveTo(PointOption.point(x, edgeBorder))
-                .release()
-                .perform();
-    }
-
-    /**
      * method to click elements
      *
      * @param element AndroidElement

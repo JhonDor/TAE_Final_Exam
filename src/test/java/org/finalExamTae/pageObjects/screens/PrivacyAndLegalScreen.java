@@ -29,7 +29,16 @@ public class PrivacyAndLegalScreen extends BaseScreen {
     public boolean verifyPrivacyAndLegalOptions(){
         List<String> expectedOptions = new ArrayList<>();
         List <Boolean> correctOption = new ArrayList<>();
-        Collections.addAll(expectedOptions, "Privacy Policy", "Terms of Use", "Supplemental Terms and Conditions","Legal Notices", "Property Rules", "Electronic Communications Disclosure", "Your California Privacy Rights", "Do Not Sell My Personal Information", "In-App Maps Subject to Google Terms and Conditions", "In-App Maps Subject to Google Privacy Policy");
+        Collections.addAll(expectedOptions, "Privacy Policy",
+                "Terms of Use",
+                "Supplemental Terms and Conditions",
+                "Legal Notices",
+                "Property Rules",
+                "Electronic Communications Disclosure",
+                "Your California Privacy Rights",
+                "Do Not Sell My Personal Information",
+                "In-App Maps Subject to Google Terms and Conditions",
+                "In-App Maps Subject to Google Privacy Policy");
         waitForVisibilityOfAllElements(privacyAndLegalMenu);
         for(int i = 0; i < privacyAndLegalMenu.size(); i++){
             correctOption.add(privacyAndLegalMenu.get(i).getText().equals(expectedOptions.get(i)));

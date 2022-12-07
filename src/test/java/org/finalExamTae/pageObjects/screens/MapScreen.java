@@ -12,7 +12,6 @@ import java.util.List;
 
 import static io.appium.java_client.pagefactory.LocatorGroupStrategy.ALL_POSSIBLE;
 
-// TODO: Auto-generated Javadoc
 
 /**
  * Map screen.
@@ -53,7 +52,6 @@ public class MapScreen extends BaseScreen {
     }
 
 
-
     /**
      * @author Hans.Marquez
      * return true if Show List Button element is displayed in screen, otherwise false.
@@ -64,7 +62,6 @@ public class MapScreen extends BaseScreen {
 
     /**
      * verifies if the hotels option is displayed
-     * @author jhon.dorado
      * @return true if the option is displayed, false otherwise
      */
     public boolean isHotelsOptionDisplayed() {
@@ -78,7 +75,6 @@ public class MapScreen extends BaseScreen {
     /**
      * verifies if all the option in the category list are correct
      * @return true if all the options are correct, false otherwise
-     * @author jhon.dorado
      */
     public boolean verifyCategoryOptions() {
         List<String> expectedOptions = new ArrayList<>();
@@ -104,7 +100,6 @@ public class MapScreen extends BaseScreen {
 
     /**
      * clicks in the category list
-     * @author jhon.dorado
      */
     public void clickCategoryList() {
         click(categoryList);

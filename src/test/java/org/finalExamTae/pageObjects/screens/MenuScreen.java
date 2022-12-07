@@ -29,12 +29,17 @@ public class MenuScreen extends BaseScreen {
     /**
      * verifies if all the options in the menu options are correct
      * @return true if all the options are correct, false otherwise
-     * @author jhon.dorado
      */
     public boolean checkMenuOptions() {
         List<String> expectedOptions = new ArrayList<>();
         List<Boolean> correctOption = new ArrayList<>();
-        Collections.addAll(expectedOptions, "My Profile", "Property Rules", "Cast Compliment", "Link to Account", "Car Locator", "Help", "Privacy & Legal");
+        Collections.addAll(expectedOptions, "My Profile",
+                "Property Rules",
+                "Cast Compliment",
+                "Link to Account",
+                "Car Locator",
+                "Help",
+                "Privacy & Legal");
         waitForVisibilityOfAllElements(menuOptions);
         for (int i = 0; i < menuOptions.size(); i++) {
             correctOption.add(menuOptions.get(i).getText().equals(expectedOptions.get(i)));
@@ -66,14 +71,6 @@ public class MenuScreen extends BaseScreen {
     public void scrollDown(int swipes) {
         String locator = "new UiScrollable(.scrollable(true)).scrollToEnd(1)";
         scroll(locator, swipes);
-    }
-
-    /**
-     * verifies if the Privacy & legal option is displayed
-     * @return true if the option is displayed, false otherwise
-     */
-    public boolean isPrivacyAndLegalDisplayed() {
-        return isElementAvailable(privacyAndLegalOption, 25);
     }
 
     /**
