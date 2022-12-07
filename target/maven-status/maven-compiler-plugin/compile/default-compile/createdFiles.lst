@@ -1,5 +1,0 @@
-org\finalExamTae\configuration\web\DriverWeb.class
-org\finalExamTae\configuration\mobile\MobileDriver.class
-org\finalExamTae\reporting\Reporter.class
-org\finalExamTae\configuration\web\WebOperations.class
-org\finalExamTae\configuration\mobile\MobileOperations.class
