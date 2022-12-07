@@ -72,7 +72,7 @@ public class mobileStepDefinitions {
      * this method helps to navigate to the menu screen
      */
     @Given("I am in the menu screen")
-    public void iAmInTheMenuView() {
+    public void iAmInTheMenuScreen() {
         Reporter.info("Entering in the Menu view");
         menuScreen = dashBoardScreen.goToMenuScreen();
     }

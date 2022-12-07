@@ -120,11 +120,7 @@ public class HomePage extends BasePage {
     public void mouseOverUserIcon() {
         super.waitForVisibility(this.userIcon);
         super.mouseOver(this.userIcon);
-        //super.waitForVisibility(this.userOptionsContainer);
-    }
 
-    public void waitLogin() {
-        super.waitForVisibility(this.userIcon);
     }
 
     /**
@@ -391,10 +387,6 @@ public class HomePage extends BasePage {
         super.waitForInvisibility(loginIframe);
     }
 
-    public void waitForUserIcon() {
-        super.waitForVisibility(userIcon);
-    }
-
 
     /**
      * Gets the Welcome text, which os displayed while performing a mouse over action on the User icon.
@@ -407,19 +399,4 @@ public class HomePage extends BasePage {
     }
 
 
-    /**
-     * Performs all needed steps for logging in.
-     *
-     * @param email    String
-     * @param password String
-     */
-    public void generalLoginProcedure(String email, String password) {
-        this.mouseOverUserIcon();
-        this.clickOnLoginOption();
-        this.switchToIframe();
-        this.typeOnEmailInput(email);
-        this.typeOnPasswordInput(password);
-        this.clickOnLoginButtonIframe();
-        this.exitIframe();
-    }
 }
